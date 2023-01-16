@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                template="../templates/MainTemplate.xhtml"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="top">
+        <b:navbarLinks>
+            <b:navLink outcome="main" value="${msg['main.main.page']}"></b:navLink>
+            <f:subview id="admin" rendered="#{request.isUserInRole('Administrator')}">
+                <b:dropMenu value="${msg['main.administrator']}" iconAwesome="fa-solid fa-shield">
+                    <b:navLink header="${msg['main.options.manage']}"></b:navLink>
+                    <b:navLink outcome="accountsListAfterFilter" value="${msg['main.options.manage.myAccount']}"></b:navLink>
+                    <b:navLink outcome="accountsList" value="${msg['main.options.manage.listAccount']}"></b:navLink>
+                    <b:navLink outcome="accountsCreateNew" value="${msg['main.options.manage.createAccount']}"></b:navLink>
+                    <b:navLink></b:navLink>
+                    <b:navLink header="${msg['main.options.another']}"></b:navLink>
+                    <b:navLink outcome="appsListForEveryone" value="${msg['main.options.another.listApps']}"></b:navLink>
+                </b:dropMenu>
+            </f:subview>
+            <f:subview id="mod" rendered="#{request.isUserInRole('Moderator')}">
+                <b:dropMenu value="${msg['main.moderator']}" iconAwesome="fa-solid fa-shield">
+                    <b:navLink header="${msg['main.options.manage']}"></b:navLink>
+                    <b:navLink outcome="accountsListAfterFilter" value="${msg['main.options.manage.myAccount']}"></b:navLink>
+                    <b:navLink></b:navLink>
+                    <b:navLink header="${msg['main.options.another']}"></b:navLink>
+                    <b:navLink outcome="appsList" value="${msg['main.options.another.listApps']}"></b:navLink> 
+                </b:dropMenu>
+            </f:subview>
+            <f:subview id="user" rendered="#{request.isUserInRole('User')}">
+                <b:dropMenu value="${msg['main.user']}" iconAwesome="fa-solid fa-shield">
+                    <b:navLink header="${msg['main.options.manage']}"></b:navLink>
+                    <b:navLink outcome="accountsListAfterFilter" value="${msg['main.options.manage.myAccount']}"></b:navLink>
+                    <b:navLink outcome="appsListAfterFilter" value="${msg['main.options.manage.myApps']}"></b:navLink>
+                    <b:navLink></b:navLink>
+                    <b:navLink header="${msg['main.options.another']}"></b:navLink>
+                    <b:navLink outcome="appsList" value="${msg['main.options.another.listApps']}"></b:navLink>
+                </b:dropMenu>
+            </f:subview>
+        </b:navbarLinks>
+    </ui:define>
+
+    <ui:define name="content">
+        <ui:include src="../templates/menu.xhtml" />
+    </ui:define>
+
+</ui:composition>

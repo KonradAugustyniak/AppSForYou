@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="menu">
+
+        <span class="navbar-text">
+            <b><h1>${msg['main.menu.welcome']}</h1></b>
+            <f:subview id='menuNotLoggedIn' rendered="#{empty request.remoteUser}">
+                <p>${msg['main.menu.info']}</p> 
+                <p><h:link outcome="appsListForEveryone">${msg['main.menu.listApps']}</h:link></p>
+            </f:subview>
+        </span>
+    </h:form>
+
+</ui:composition>

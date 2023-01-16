@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
+        <title>Wrzuc aplikacje</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h:form id="appUploadedConfirmForm">
+
+            ${msg['apps.list.applicationName']} : <h:outputText id="applicationName" value="#{applicationUploadConfirmPageBean.app.applicationName}"/><br />
+            ${msg['apps.list.description']} : <h:outputText id="description" value="#{applicationUploadConfirmPageBean.app.description}" /><br />
+            ${msg['apps.list.applicationVersion']} : <h:outputText id="applicationVersion" value="#{applicationUploadConfirmPageBean.app.applicationVersion}" /><br />
+            ${msg['apps.list.operatingSystem']} : <h:outputText id="operatingSystem" value="#{applicationUploadConfirmPageBean.app.operatingSystem}" /><br />
+            ${msg['apps.list.file']} : <h:outputText id="applicationFile" value="#{applicationUploadConfirmPageBean.app.applicationFile}" /><br />
+
+            <h:messages/>
+            <h:commandButton value="${msg['buttons.actions.confirm']}" action="#{applicationUploadConfirmPageBean.uploadNewApplication()}" />
+            <h:commandButton value="${msg['buttons.actions.cancel']}" action="main" immediate="true" />
+        </h:form>
+    </body>
+</html>

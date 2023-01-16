@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:b="http://bootsfaces.net/ui"
+                template="../templates/MainTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <ui:define name="top">
+        <b:navbarLinks>
+            <b:navLink outcome="main" value="${msg['main.main.page']}"></b:navLink> 
+        </b:navbarLinks>
+    </ui:define>
+
+    <ui:define name="content">
+
+        <center> 
+            <p:card style="width: 65rem; margin-bottom: 2em">
+
+                <b:form id="loginForm">
+                    <h:panelGrid id="grid" columns="2" cellpadding="17">
+                        <b:inputText id="usernameDiv" fieldId="j_username" name="j_username"
+                                     value="#{loginController.username}"
+                                     label="${msg['accounts.list.login']}"/>
+                        <p:message  for="usernameDiv"/>
+                        <b:inputSecret id="passwordDiv" fieldId="j_password" name="j_password"
+                                       value="#{loginController.password}"
+                                       label="${msg['accounts.create.password']}"/>
+                        <p:message  for="passwordDiv"/>
+                    </h:panelGrid>
+
+                    <b:commandButton update="@form" value="${msg['main.logIn']}" action="#{loginController.login()}"/>
+                </b:form>
+
+            </p:card>
+        </center>
+
+    </ui:define>
+
+</ui:composition>

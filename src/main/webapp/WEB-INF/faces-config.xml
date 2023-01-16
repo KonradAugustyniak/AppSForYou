@@ -1,0 +1,178 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.3"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_3.xsd">
+    
+    
+    <!-- ********************** GLOBAL VIEW ********************** -->
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/main/index.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>registration</from-outcome>
+            <to-view-id>/registration/registration.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>log_in</from-outcome> 
+            <to-view-id>/login/log_in.xhtml</to-view-id> 
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>log_error</from-outcome> 
+            <to-view-id>/login/log_error.xhtml</to-view-id> 
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>privacyPolicy</from-outcome>
+            <to-view-id>/utils/privacyPolicy.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>regulations</from-outcome>
+            <to-view-id>/utils/regulations.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>log_out_success</from-outcome> 
+            <to-view-id>/login/log_out_success.xhtml</to-view-id> 
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>appsListForEveryone</from-outcome> 
+            <to-view-id>/apps/appsListForEveryone.xhtml</to-view-id> 
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- ********************** INDEX VIEW ********************** -->
+    <navigation-rule>
+        <from-view-id>/main/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>appsList</from-outcome> 
+            <to-view-id>/apps/appsList.xhtml</to-view-id> 
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>appsListAfterFilter</from-outcome>
+            <to-view-id>/apps/appsListAfterFilter.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>accountsList</from-outcome>
+            <to-view-id>/accounts/accountsList.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>accountsListAfterFilter</from-outcome>
+            <to-view-id>/accounts/accountsListAfterFilter.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>accountsCreateNew</from-outcome>
+            <to-view-id>/accounts/accountsCreateNew.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>log_out_success</from-outcome>
+            <to-view-id>/login/log_out_success.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- ********************** REGISTRATION VIEW ********************** -->
+    <navigation-rule>
+        <from-view-id>/registration/registration.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>registrationConfirm</from-outcome>
+            <to-view-id>/registration/registrationConfirm.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- ********************** CREATE ACCOUNT BY ADMIN VIEW ********************** -->
+    <navigation-rule>
+        <from-view-id>/accounts/accountsCreateNew.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>accountsCreateNewConfirm</from-outcome>
+            <to-view-id>/accounts/accountsCreateNewConfirm.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- ********************** CONFIRM ACCOUNT BY ADMIN VIEW ********************** -->
+    <navigation-rule>
+        <from-view-id>/accounts/accountsCreateNewConfirm.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>registrationSuccessful</from-outcome>
+            <to-view-id>/registration/registrationSuccessful.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>registrationFailed</from-outcome>
+            <to-view-id>/registration/registrationFailed.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- ********************** APPS VIEW ********************** -->
+    <navigation-rule>
+        <from-view-id>/apps/appsUpload.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>appsUploadConfirm</from-outcome>
+            <to-view-id>/apps/appsUploadConfirm.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- ********************** LOGIN VIEW ********************** -->
+    <navigation-rule>
+        <from-view-id>/login/log_in.xhtml</from-view-id> 
+        <navigation-case>
+            <from-outcome>main</from-outcome>
+            <to-view-id>/main/index.xhtml</to-view-id>
+            <redirect/>
+        </navigation-case>
+    </navigation-rule>
+    
+    <!-- ********************** PRIMEFACES DIALOG FRAMEWORK CONFIGURE ********************** -->
+    
+    <application>
+        <action-listener>
+            org.primefaces.application.DialogActionListener
+        </action-listener>
+        <navigation-handler>
+            org.primefaces.application.DialogNavigationHandler
+        </navigation-handler>
+        <view-handler>
+            org.primefaces.application.DialogViewHandler
+        </view-handler>
+    </application>
+    
+    <!-- ********************** I18N CONFIGURE ********************** -->
+    
+    <application>
+        <locale-config>
+            <default-locale>pl</default-locale>
+            <supported-locale>pl</supported-locale>
+            <supported-locale>en</supported-locale>
+        </locale-config>
+        <resource-bundle>
+            <base-name>i18n.messages</base-name>
+            <var>msg</var>
+        </resource-bundle>
+        <message-bundle>
+            i18n.jsf_messages
+        </message-bundle>
+        <resource-bundle>
+            <base-name>/Bundle</base-name>
+            <var>bundle</var>
+        </resource-bundle>
+    </application>
+
+</faces-config>

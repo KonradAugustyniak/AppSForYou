@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                template="../templates/MainTemplate.xhtml"
+                xmlns:p="http://primefaces.org/ui">
+
+    <ui:define name="top">
+        <b:navbarLinks>
+            <b:navLink outcome="main" value="${msg['main.main.page']}"></b:navLink>
+        </b:navbarLinks>
+    </ui:define>
+
+    <ui:define name="content">
+
+        <center>
+
+            <p:card style="width: 65rem; margin-bottom: 2em">
+
+                <f:facet name="title">
+                    ${msg['accounts.create.form.title']}
+                </f:facet> 
+
+                <h:form id="createNewAccountByAdminPanel">
+
+                    <h:panelGrid id="grid" columns="2" cellpadding="17">
+
+                        <b:inputText id="name" label="${msg['accounts.list.name']}"  value="#{accountCreateNewByAdmin.account.name}" required="true"/>
+                        <p:message  for="name"/>
+
+                        <b:inputText id="surname" label="${msg['accounts.list.surname']}"  value="#{accountCreateNewByAdmin.account.surname}" required="true"/>
+                        <p:message  for="surname"/>
+
+                        <b:inputText id="email" label="${msg['accounts.list.email']}"  value="#{accountCreateNewByAdmin.account.email}" required="true"/>
+                        <p:message  for="email"/>
+
+                        <b:inputText id="login" label="${msg['accounts.list.login']}"  value="#{accountCreateNewByAdmin.account.login}" required="true"/>
+                        <p:message  for="login"/>
+
+                        <b:selectOneMenu  label="${msg['accounts.list.accountType']}" value="#{accountCreateNewByAdmin.account.accountType}" id="os">
+                            <f:selectItems  value="#{accountListPageBean.accountTypeList}" var="type" itemLabel="#{type}" itemValue="#{type}" />
+                        </b:selectOneMenu>
+                        <p:message  for="os"/>
+
+                        <b:inputSecret id="password" label="${msg['accounts.create.password']}"  value="#{accountCreateNewByAdmin.account.password}" required="true"/>
+                        <p:message  for="password"/>
+
+                        <b:inputSecret id="repeatPassword" label="${msg['accounts.create.repeatPassword']}"  value="#{accountCreateNewByAdmin.repeatPassword}" required="true"/>
+                        <p:message  for="repeatPassword"/>
+
+                    </h:panelGrid>
+
+                    <b:commandButton value="${msg['buttons.actions.confirm']}" action="#{accountCreateNewByAdmin.saveDataForCreateNewAccountByAdmin()}" />
+                    <b:commandButton value="${msg['buttons.actions.cancel']}" action="main" immediate="true" />
+
+                </h:form>
+
+            </p:card>  
+
+        </center>
+
+    </ui:define>
+
+</ui:composition>

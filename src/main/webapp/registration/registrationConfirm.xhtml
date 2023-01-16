@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <head>
+        <title>Formularz rejestracyjny AppStore</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+    <body>
+        <h:form id="registrationConfirmForm">
+            ${msg['accounts.list.name']} : <h:outputText id="name" value="#{accountRegisterConfirmPageBean.account.name}"/><br />
+            ${msg['accounts.list.surname']} : <h:outputText id="surname" value="#{accountRegisterConfirmPageBean.account.surname}" /><br />
+            ${msg['accounts.list.email']} : <h:outputText id="email" value="#{accountRegisterConfirmPageBean.account.email}" /><br />
+            ${msg['accounts.list.login']} : <h:outputText id="login" value="#{accountRegisterConfirmPageBean.account.login}" /><br />
+            <h:messages/>
+            <h:commandButton value="${msg['buttons.actions.confirm']}" action="#{accountRegisterConfirmPageBean.registerAccount()}" />
+            <h:commandButton value="${msg['buttons.actions.cancel']}" action="main" immediate="true" />
+        </h:form>
+    </body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE composition PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" 
+                xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:b="http://bootsfaces.net/ui"
+                xmlns:p="http://primefaces.org/ui"
+                template="../templates/MainTemplate.xhtml">
+
+    <ui:define name="top">
+        <b:navbarLinks>
+            <b:navLink outcome="main" value="${msg['main.main.page']}"></b:navLink>
+        </b:navbarLinks>
+    </ui:define>
+
+    <ui:define name="content">
+        <h:form enctype="multipart/form-data">
+
+            <div class="card">
+                <b:inputText id="applicationName" label="${msg['apps.list.applicationName']}"  value="#{applicationEditBean.app.applicationName}" required="true" span="6"/>
+
+                <b:inputText id="description" label="${msg['apps.list.description']}"  value="#{applicationEditBean.app.description}" required="true" span="6"/>
+
+                <b:inputText id="applicationVersion" label="${msg['apps.list.applicationVersion']}"  value="#{applicationEditBean.app.applicationVersion}" required="true" span="6"/>
+
+                <b:selectOneMenu  label="${msg['apps.list.operatingSystem']}" value="#{applicationEditBean.app.operatingSystem}" span="6">
+                    <f:selectItems  value="#{applicationListPageBean.operatingSystemsList}" var="system" itemLabel="#{system}" itemValue="#{system}" />
+                </b:selectOneMenu>
+            </div>
+
+            <br> 
+                <div class="card">
+                    <p:fileUpload value="#{applicationEditBean.file}" mode="simple" allowTypes="/(\.|\/)(txt)$/" accept=".txt"
+                                  onupload="return confirm('Are you sure?')" />
+                    <b:commandButton value="${msg['buttons.actions.upload']}" ajax="false" action="#{applicationEditBean.uploadApplicationFile()}"/>
+                </div> 
+            </br>
+
+            <br> 
+                <div class="card">
+                    <b:commandButton value="${msg['buttons.actions.save']}" action="#{applicationEditBean.saveNewDataForEditApplication()}"/>
+                    <b:commandButton value="${msg['buttons.actions.cancel']}" action="main"  immediate="true"/>
+                </div> 
+            </br>
+
+            <b:messages/>
+
+        </h:form>
+    </ui:define>
+
+</ui:composition>

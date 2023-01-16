@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <!--Ustawienie zakazu buforowania strony dla HTTP 1.1+-->
+        <meta http-equiv="Cache-Control" content="no-cache,no-store,must-revalidate" />
+        <!--Ustawienie zakazu buforowania strony dla HTTP 1.0-->
+        <meta http-equiv="Pragma" content="no-cache" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>#{initParam['AppName']}</title>
+    </h:head>
+
+    <h:body>
+
+        <b:navBar brand="#{initParam['AppName']}" brandHref="#" fluid="true">
+
+            <div id="top">
+                <ui:insert name="top">Top</ui:insert>
+            </div>
+
+            <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+            <menu class="nav navbar-nav navbar-right">
+                <f:subview id='menuNotLoggedIn' rendered="#{empty request.remoteUser}">
+                    <li><a href="#{request.contextPath}/faces/registration/registration.xhtml"><span class="glyphicon glyphicon-user"></span> ${msg['main.register']}</a></li>
+                    <li><h:link outcome="log_in"><span class="glyphicon glyphicon-log-in"></span> ${msg['main.logIn']}</h:link></li>
+                </f:subview>
+                <f:subview id="menuLoggedIn" rendered="#{not empty request.remoteUser}">
+                    <span class="navbar-text">
+                        <h:form class="navbar-form">
+                            ${msg['main.logInAs']} -> <h:outputText id="user" value="#{contextUtils.userName}"/> &nbsp; <h:commandLink value="${msg['main.logOut']}" action="#{contextUtils.invalidateSession()}"/>
+                        </h:form>
+                    </span>
+                </f:subview>
+            </menu>
+        </b:navBar>
+
+        <div>
+            <div id="content" class="right_content">
+                <ui:insert name="content">Content</ui:insert>
+            </div>
+        </div>
+
+        <b:navBar fluid="true" fixed="bottom">
+            <span class="navbar-text">
+                © 2022 Developed by #{initParam['Author']}
+            </span>
+            <b:navbarLinks pull="right"><b:navLink value="    " href="#"></b:navLink></b:navbarLinks>
+            <b:navbarLinks  pull="right" styleClass="hidden-xs">
+                <h:form class="navbar-form-second">
+                    <b:navLink value="${msg['main.regulations']}" href="#{request.contextPath}/faces/utils/regulations.xhtml"></b:navLink>
+                    <h:commandLink  value="${msg['main.privacyPolicy']}" action="#{utilsPageBean.viewPrivacyPolicy()}"></h:commandLink>
+                </h:form>
+            </b:navbarLinks>
+        </b:navBar>
+
+    </h:body>
+
+</html>
